@@ -3,283 +3,1057 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Concorsi di Composizione 2026–27 · Cosimo Bombardieri</title>
+<title>Composition Competitions Worldwide · Cosimo Bombardieri</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --ink:#0a0a0a;--ink2:#1a1a1a;--ink3:#2e2e2e;
-  --smoke:#4a4a4a;--ash:#7a7a7a;--silver:#b0b0b0;
-  --fog:#d8d5d0;--linen:#f0ede8;--ivory:#f8f6f2;--white:#ffffff;
-  --gold:#c8a96e;
-  --serif:'Cormorant Garamond','Book Antiqua',Georgia,serif;
-  --sans:'Montserrat','Helvetica Neue',sans-serif
+
+/* ─────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --white:   #ffffff;
+  --bg:      #f9f8f6;
+  --surface: #ffffff;
+  --border:  #e8e4de;
+  --border2: #d0cac0;
+  --text:    #111111;
+  --text2:   #3a3a3a;
+  --muted:   #6b6560;
+  --faint:   #a09890;
+  --gold:    #b8892a;
+  --gold-bg: #fdf6e8;
+
+  /* urgency — vivid but tasteful on white */
+  --hot-bg: #fff0f0; --hot-tx: #c0200c; --hot-br: #f0b8b0;
+  --soon-bg:#fff8e8; --soon-tx:#9a6000; --soon-br:#f0d898;
+  --open-bg:#f0f8f0; --open-tx:#186030; --open-br:#a8d8b0;
+
+  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius: 0px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
 }
-html{font-size:16px;scroll-behavior:smooth}
-body{background:var(--ink);color:var(--white);font-family:var(--sans);font-weight:300;line-height:1.65;min-height:100vh;-webkit-font-smoothing:antialiased}
-.hero{background:var(--ink);padding:3.5rem 4rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.08);position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:end;gap:2rem}
-.hero-kicker{font-family:var(--sans);font-weight:300;font-size:0.62rem;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem}
-.hero-kicker::before{content:'';display:block;width:28px;height:1px;background:var(--gold);flex-shrink:0}
-.hero-title{font-family:var(--serif);font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:300;line-height:1.0;color:var(--white)}
-.hero-title em{font-style:italic;color:var(--ivory);display:block}
-.hero-sub{margin-top:1.2rem;font-family:var(--sans);font-weight:300;font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--ash)}
-.hero-actions{display:flex;flex-direction:column;align-items:flex-end;gap:0.7rem}
-.lang-toggle{display:flex;border:1px solid rgba(255,255,255,0.12)}
-.lang-btn{background:none;border:none;border-right:1px solid rgba(255,255,255,0.12);color:var(--silver);font-family:var(--sans);font-weight:300;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.4rem 0.9rem;cursor:pointer;transition:all 0.15s}
-.lang-btn:last-child{border-right:none}
-.lang-btn.on{background:rgba(255,255,255,0.06);color:var(--white)}
-.last-upd{font-family:var(--sans);font-weight:200;font-size:0.58rem;letter-spacing:0.15em;color:var(--ash);text-align:right}
-.stats-row{background:var(--ink2);border-bottom:1px solid rgba(255,255,255,0.06);padding:1.3rem 4rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
-.stats-inner{display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;flex:1}
-.stat{display:flex;flex-direction:column;gap:0.05rem}
-.stat-num{font-family:var(--serif);font-size:2rem;font-weight:300;line-height:1;color:var(--white)}
-.stat-lbl{font-family:var(--sans);font-weight:300;font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ash)}
-.stat-div{width:1px;height:32px;background:rgba(255,255,255,0.08)}
-.showing-lbl{margin-left:auto;font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--ash)}
-.showing-lbl strong{font-style:normal;color:var(--white);font-weight:400;font-size:1.3rem}
-.filter-bar{background:var(--ink2);border-bottom:1px solid rgba(255,255,255,0.06);position:sticky;top:0;z-index:100;padding:0 4rem;box-shadow:0 4px 24px rgba(0,0,0,0.5)}
-.filter-scroll{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none}
-.filter-scroll::-webkit-scrollbar{display:none}
-.fgroup{display:flex;align-items:stretch;border-right:1px solid rgba(255,255,255,0.06);padding-right:1rem;margin-right:0.8rem;gap:0.1rem}
-.fgroup:last-child{border-right:none;margin-right:0;padding-right:0}
-.flbl{display:flex;align-items:center;font-family:var(--sans);font-weight:200;font-size:0.53rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--ash);padding-right:0.7rem;border-right:1px solid rgba(255,255,255,0.06);margin-right:0.5rem}
-.chip{background:none;border:none;border-bottom:2px solid transparent;color:var(--silver);font-family:var(--sans);font-weight:300;font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;padding:1rem 0.6rem;cursor:pointer;white-space:nowrap;transition:all 0.15s;display:flex;align-items:center;gap:0.3rem}
-.chip:hover{color:var(--white)}
-.chip.on{color:var(--white);border-bottom-color:var(--gold)}
-.cdot{width:5px;height:5px;border-radius:50%;flex-shrink:0;opacity:0.7}
-.chip.on .cdot{opacity:1}
-.search-bar{background:var(--ink3);border-bottom:1px solid rgba(255,255,255,0.06);padding:0.7rem 4rem;display:flex;align-items:center;gap:1.5rem}
-.search-wrap{position:relative;flex:1;max-width:560px}
-.search-wrap svg{position:absolute;left:0.9rem;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--ash);pointer-events:none}
-.search-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:0;color:var(--white);font-family:var(--sans);font-weight:300;font-size:0.82rem;letter-spacing:0.04em;padding:0.55rem 1rem 0.55rem 2.5rem;outline:none;transition:border-color 0.2s}
-.search-input:focus{border-color:rgba(200,169,110,0.45)}
-.search-input::placeholder{color:var(--ash)}
-.free-label{display:flex;align-items:center;gap:0.5rem;font-family:var(--sans);font-weight:300;font-size:0.64rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--silver);cursor:pointer;user-select:none;white-space:nowrap}
-.free-label input{accent-color:var(--gold);width:13px;height:13px}
-.sources-strip{background:var(--ink);border-bottom:1px solid rgba(255,255,255,0.05);padding:0.5rem 4rem;display:flex;align-items:center;gap:0.45rem;flex-wrap:wrap;font-family:var(--sans)}
-.s-lbl{font-weight:200;font-size:0.53rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--ash);margin-right:0.2rem}
-.s-link{font-size:0.58rem;font-weight:300;letter-spacing:0.07em;color:var(--silver);text-decoration:none;padding:0.18rem 0.55rem;border:1px solid rgba(255,255,255,0.08);transition:all 0.15s}
-.s-link:hover{color:var(--gold);border-color:rgba(200,169,110,0.3)}
-.grid-zone{max-width:1280px;margin:0 auto;padding:2rem 4rem 5rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:1px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.07)}
-.card{background:var(--ink2);display:flex;flex-direction:column;position:relative;transition:background 0.14s;overflow:hidden}
-.card:hover{background:var(--ink3)}
-.card.hidden{display:none!important}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
-.card-body{padding:1.7rem 1.9rem 1.3rem;flex:1;display:flex;flex-direction:column}
-.card-r1{display:flex;justify-content:space-between;align-items:flex-start;gap:0.6rem;margin-bottom:1.1rem}
-.badge{font-family:var(--sans);font-weight:300;font-size:0.57rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ash)}
-.dl-tag{font-family:var(--sans);font-weight:400;font-size:0.63rem;letter-spacing:0.09em;padding:0.28rem 0.72rem;border:1px solid;white-space:nowrap;flex-shrink:0}
-.dl-tag.hot{background:rgba(139,26,26,0.15);color:#e07070;border-color:rgba(139,26,26,0.45)}
-.dl-tag.soon{background:rgba(107,74,8,0.15);color:#d4a050;border-color:rgba(107,74,8,0.45)}
-.dl-tag.open{background:rgba(26,74,46,0.12);color:#70c090;border-color:rgba(26,74,46,0.35)}
-.card-title{font-family:var(--serif);font-size:1.22rem;font-weight:500;line-height:1.25;letter-spacing:0.01em;color:var(--white);margin-bottom:0.4rem}
-.card-org{font-family:var(--sans);font-weight:200;font-size:0.69rem;letter-spacing:0.06em;color:var(--ash);margin-bottom:1.2rem}
-.info-block{border-top:1px solid rgba(255,255,255,0.07);padding-top:0.9rem;display:flex;flex-direction:column;gap:0.48rem;flex:1}
-.irow{display:grid;grid-template-columns:78px 1fr;gap:0.5rem;font-size:0.78rem;line-height:1.5}
-.ikey{font-family:var(--sans);font-weight:300;font-size:0.57rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ash);padding-top:0.1rem}
-.ival{color:var(--fog);font-weight:300}
-.ival.prize{color:var(--ivory);font-weight:400}
-.ival.hot{color:#e07070}
-.ival.soon{color:#d4a050}
-.ival.open{color:#70c090}
-.free-badge{display:inline-flex;align-items:center;font-family:var(--sans);font-weight:300;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;background:rgba(26,74,46,0.2);color:#70c090;border:1px solid rgba(26,74,46,0.4);padding:0.1rem 0.45rem;margin-left:0.45rem;vertical-align:middle}
-.card-foot{padding:0.9rem 1.9rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.18)}
-.card-flag{font-size:0.7rem;font-family:var(--sans);font-weight:200;color:var(--ash);letter-spacing:0.05em}
-.card-link{font-family:var(--sans);font-weight:300;font-size:0.61rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:all 0.15s;padding-bottom:1px;border-bottom:1px solid rgba(200,169,110,0.3)}
-.card-link:hover{color:var(--white);border-color:var(--white)}
-.src-mark{position:absolute;top:0.6rem;right:1.8rem;font-family:var(--sans);font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.1);opacity:0;transition:opacity 0.15s}
-.card:hover .src-mark{opacity:1}
-#empty-state{display:none;grid-column:1/-1;padding:5rem 3rem;text-align:center;background:var(--ink2);font-family:var(--serif);font-size:1.5rem;font-style:italic;font-weight:300;color:var(--ash)}
-#overlay{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.88);backdrop-filter:blur(6px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem}
-#overlay.on{display:flex}
-.loader-ring{width:38px;height:38px;border:1px solid rgba(200,169,110,0.2);border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite}
-.loader-txt{font-family:var(--sans);font-weight:200;font-size:0.63rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--silver)}
-@keyframes spin{to{transform:rotate(360deg)}}
-#toast{position:fixed;bottom:2.5rem;right:2.5rem;background:var(--ink2);border:1px solid rgba(200,169,110,0.3);border-left:3px solid var(--gold);color:var(--ivory);font-family:var(--sans);font-weight:300;font-size:0.77rem;letter-spacing:0.04em;line-height:1.6;padding:0.9rem 1.3rem;max-width:360px;z-index:9999;opacity:0;transform:translateY(10px);transition:all 0.25s;pointer-events:none}
-#toast.on{opacity:1;transform:translateY(0)}
-.page-footer{background:var(--ink);border-top:1px solid rgba(200,169,110,0.15);padding:1.8rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.footer-sig{font-family:var(--serif);font-size:1.05rem;font-style:italic;font-weight:300;color:var(--ash)}
-.footer-sig strong{font-style:normal;color:var(--silver);font-weight:400}
-.footer-note{font-family:var(--sans);font-weight:200;font-size:0.57rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--smoke);text-align:right;line-height:1.8}
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.card{animation:fadeUp 0.32s ease both}
-[data-l="en"]{display:none}
-body.en [data-l="it"]{display:none}
-body.en [data-l="en"]{display:inline}
-@media(max-width:840px){
-  .hero,.filter-bar,.search-bar,.sources-strip,.grid-zone,.stats-row,.page-footer{padding-left:1.4rem;padding-right:1.4rem}
-  .hero-inner{grid-template-columns:1fr}
-  .hero-actions{align-items:flex-start;flex-direction:row;flex-wrap:wrap}
-  .grid{grid-template-columns:1fr}
-  .irow{grid-template-columns:66px 1fr}
-  .stats-inner{gap:1.4rem}
+
+html { font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─────────────────────────────────────
+   HEADER
+───────────────────────────────────── */
+.site-header {
+  background: var(--white);
+  border-bottom: 2px solid var(--text);
+  padding: 2.5rem 2rem 2rem;
+}
+.site-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.header-kicker {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.header-kicker::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.site-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.site-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--muted);
+}
+.header-meta {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+.header-tagline {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+.lang-row {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.lang-toggle {
+  display: flex;
+  border: 1.5px solid var(--border2);
+}
+.lang-btn {
+  background: none;
+  border: none;
+  border-right: 1.5px solid var(--border2);
+  color: var(--faint);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.lang-btn:last-child { border-right: none; }
+.lang-btn.on { background: var(--text); color: var(--white); }
+.upd-label {
+  font-size: 0.75rem;
+  color: var(--faint);
+  letter-spacing: 0.02em;
+}
+.upd-label strong { color: var(--muted); font-weight: 500; }
+
+/* ─────────────────────────────────────
+   STATS BAR
+───────────────────────────────────── */
+.stats-bar {
+  background: var(--text);
+  padding: 1.2rem 2rem;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.stats-bar::-webkit-scrollbar { display: none; }
+.stats-bar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  gap: 0;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 80px;
+  gap: 0.15rem;
+  padding: 0 1rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.stat-item:last-child { border-right: none; }
+.stat-n {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+.stat-l {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ─────────────────────────────────────
+   STICKY CONTROLS
+───────────────────────────────────── */
+.controls {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.controls-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Search */
+.search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+  max-width: 420px;
+}
+.search-wrap svg {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px; height: 16px;
+  color: var(--faint);
+  pointer-events: none;
+}
+.search-input {
+  width: 100%;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding: 0.55rem 1rem 0.55rem 2.6rem;
+  outline: none;
+  transition: border-color 0.15s;
+  border-radius: 0;
+}
+.search-input:focus { border-color: var(--text); }
+.search-input::placeholder { color: var(--faint); }
+
+/* Filter chips */
+.chips-row {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.chips-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+  padding-right: 0.3rem;
+}
+.chip {
+  background: none;
+  border: 1.5px solid var(--border);
+  color: var(--muted);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.12s;
+  white-space: nowrap;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.chip:hover { border-color: var(--text); color: var(--text); }
+.chip.on { background: var(--text); border-color: var(--text); color: var(--white); }
+.chip .cdot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+/* Urgency chips */
+.chip.hot-chip  { border-color: var(--hot-br); color: var(--hot-tx); }
+.chip.soon-chip { border-color: var(--soon-br); color: var(--soon-tx); }
+.chip.open-chip { border-color: var(--open-br); color: var(--open-tx); }
+.chip.hot-chip.on  { background: var(--hot-tx); border-color: var(--hot-tx); color: var(--white); }
+.chip.soon-chip.on { background: var(--soon-tx); border-color: var(--soon-tx); color: var(--white); }
+.chip.open-chip.on { background: var(--open-tx); border-color: var(--open-tx); color: var(--white); }
+
+/* Free toggle */
+.free-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  padding: 0.35rem 0.75rem;
+  border: 1.5px solid var(--border);
+  transition: all 0.12s;
+}
+.free-label:has(input:checked) {
+  background: var(--open-bg);
+  border-color: var(--open-br);
+  color: var(--open-tx);
+}
+.free-label input { accent-color: var(--open-tx); width: 14px; height: 14px; }
+
+/* Results count */
+.results-count {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--faint);
+  white-space: nowrap;
+  margin-left: auto;
+  padding-left: 0.5rem;
+}
+.results-count strong { color: var(--text); font-weight: 600; font-size: 0.92rem; }
+
+/* ─────────────────────────────────────
+   SECOND FILTER ROW (urgency + category)
+───────────────────────────────────── */
+.filter-row2 {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.filter-row2::-webkit-scrollbar { display: none; }
+.filter-row2-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  min-width: max-content;
+}
+.cat-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border2);
+  margin: 0 0.4rem;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────
+   GRID
+───────────────────────────────────── */
+.grid-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.8rem 2rem 3rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ─────────────────────────────────────
+   CARD
+───────────────────────────────────── */
+.card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-top: 3px solid var(--border2);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border-top-color: var(--text);
+  transform: translateY(-2px);
+}
+.card.hidden { display: none !important; }
+
+/* Category top accent */
+.card[data-t="orch"]    { border-top-color: #1a1a1a; }
+.card[data-t="chamb"]   { border-top-color: #5a4a2a; }
+.card[data-t="solo"]    { border-top-color: #2a4a6a; }
+.card[data-t="choral"]  { border-top-color: #4a2a6a; }
+.card[data-t="vocal"]   { border-top-color: #2a5a5a; }
+.card[data-t="mixed"]   { border-top-color: #6a3a1a; }
+.card[data-t="electro"] { border-top-color: #1a5a5a; }
+.card[data-t="grant"]   { border-top-color: #4a5a1a; }
+
+.card-head {
+  padding: 1.4rem 1.6rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+.card-badge {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--faint);
+  line-height: 1;
+  padding-top: 0.1rem;
+  flex: 1;
+}
+.dl-pill {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.32rem 0.75rem;
+  border: 1.5px solid;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border-radius: 0;
+}
+.dl-pill.hot  { background: var(--hot-bg);  color: var(--hot-tx);  border-color: var(--hot-br); }
+.dl-pill.soon { background: var(--soon-bg); color: var(--soon-tx); border-color: var(--soon-br); }
+.dl-pill.open { background: var(--open-bg); color: var(--open-tx); border-color: var(--open-br); }
+
+.card-body { padding: 0 1.6rem 1.4rem; flex: 1; display: flex; flex-direction: column; }
+
+.card-title {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.28;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+.card-org {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 1.1rem;
+  line-height: 1.4;
+}
+
+/* Info table */
+.info-table {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex: 1;
+}
+.info-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  align-items: baseline;
+}
+.info-key {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding-top: 0.1rem;
+}
+.info-val { color: var(--text2); font-weight: 400; }
+.info-val.prize { color: var(--text); font-weight: 600; font-size: 0.88rem; }
+.info-val.hot  { color: var(--hot-tx);  font-weight: 600; }
+.info-val.soon { color: var(--soon-tx); font-weight: 600; }
+.info-val.open { color: var(--open-tx); }
+
+.free-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--open-bg);
+  color: var(--open-tx);
+  border: 1.5px solid var(--open-br);
+  padding: 0.1rem 0.45rem;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
+/* Card footer */
+.card-foot {
+  padding: 1rem 1.6rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg);
+}
+.card-flag {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+.card-link {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-bottom: 1.5px solid var(--border2);
+  padding-bottom: 1px;
+  transition: all 0.15s;
+}
+.card-link:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ─────────────────────────────────────
+   EMPTY STATE
+───────────────────────────────────── */
+.empty-state {
+  display: none;
+  grid-column: 1 / -1;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+.empty-state p {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--faint);
+}
+
+/* ─────────────────────────────────────
+   SOURCES FOOTER
+───────────────────────────────────── */
+.site-footer {
+  background: var(--white);
+  border-top: 2px solid var(--border);
+  padding: 2.5rem 2rem;
+  margin-top: 2rem;
+}
+.site-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.footer-section-title {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 0.8rem;
+}
+.sources-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.src-link {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text2);
+  text-decoration: none;
+  padding: 0.45rem 0.9rem;
+  border: 1.5px solid var(--border);
+  transition: all 0.15s;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.src-link:hover { border-color: var(--text); color: var(--text); background: var(--white); }
+.src-link svg { width: 12px; height: 12px; flex-shrink: 0; opacity: 0.5; }
+.footer-bottom {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.footer-sig {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--muted);
+}
+.footer-sig strong { font-style: normal; color: var(--text); font-weight: 700; }
+.footer-note {
+  font-size: 0.72rem;
+  color: var(--faint);
+  text-align: right;
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────
+   LOADING OVERLAY
+───────────────────────────────────── */
+#overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(249,248,246,0.9);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+#overlay.on { display: flex; }
+.spinner {
+  width: 36px; height: 36px;
+  border: 2px solid var(--border);
+  border-top-color: var(--text);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+.spinner-txt {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─────────────────────────────────────
+   TOAST
+───────────────────────────────────── */
+#toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--text);
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.6;
+  padding: 1rem 1.5rem;
+  max-width: 340px;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.22s;
+  pointer-events: none;
+  border-left: 3px solid var(--gold);
+}
+#toast.on { opacity: 1; transform: translateY(0); }
+#toast.err { border-left-color: var(--hot-tx); }
+
+/* ─────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────── */
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card { animation: cardIn 0.28s ease both; }
+
+/* ─────────────────────────────────────
+   LANGUAGE
+───────────────────────────────────── */
+[data-l="en"] { display: none; }
+body.en [data-l="it"] { display: none; }
+body.en [data-l="en"] { display: inline; }
+
+/* ─────────────────────────────────────
+   MOBILE — < 640px
+───────────────────────────────────── */
+@media (max-width: 640px) {
+  .site-header { padding: 1.8rem 1.2rem 1.5rem; }
+  .site-title { font-size: 1.75rem; line-height: 1.1; }
+  .header-meta { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+  .lang-row { margin-left: 0; }
+  .stats-bar { padding: 1rem 1.2rem; }
+  .stat-n { font-size: 1.5rem; }
+  .stat-l { font-size: 0.55rem; }
+  .controls-inner { padding: 0.65rem 1.2rem; gap: 0.5rem; }
+  .search-wrap { max-width: 100%; min-width: unset; flex: 1 1 100%; order: -1; }
+  .chips-row { flex: 1 1 100%; gap: 0.3rem; }
+  .chips-label { display: none; }
+  .chip { font-size: 0.7rem; padding: 0.3rem 0.6rem; }
+  .free-label { font-size: 0.72rem; }
+  .results-count { margin-left: 0; flex: 1 1 100%; text-align: center; padding: 0.2rem 0 0; }
+  .filter-row2 { padding: 0.5rem 1.2rem; }
+  .grid-wrap { padding: 1.2rem 1.2rem 2.5rem; }
+  .grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .card-head { padding: 1.2rem 1.3rem 0; }
+  .card-body { padding: 0 1.3rem 1.2rem; }
+  .card-title { font-size: 1.1rem; }
+  .card-org { font-size: 0.8rem; }
+  .info-row { font-size: 0.82rem; grid-template-columns: 72px 1fr; }
+  .card-foot { padding: 0.85rem 1.3rem; }
+  .site-footer { padding: 2rem 1.2rem; }
+  #toast { left: 1rem; right: 1rem; bottom: 1rem; max-width: 100%; }
+}
+
+/* ─────────────────────────────────────
+   TABLET — 641px–1024px
+───────────────────────────────────── */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .site-header { padding: 2rem 1.5rem 1.8rem; }
+  .controls-inner { padding: 0.7rem 1.5rem; }
+  .filter-row2 { padding: 0.6rem 1.5rem; }
+  .grid-wrap { padding: 1.5rem 1.5rem 3rem; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; }
+  .site-footer { padding: 2rem 1.5rem; }
 }
 </style>
 </head>
 <body>
-<div id="overlay"><div class="loader-ring"></div><div class="loader-txt"><span data-l="it">Aggiornamento</span><span data-l="en">Updating</span></div></div>
+
+<div id="overlay">
+  <div class="spinner"></div>
+  <div class="spinner-txt">
+    <span data-l="it">Aggiornamento in corso</span>
+    <span data-l="en">Updating database</span>
+  </div>
+</div>
 <div id="toast"></div>
-<header class="hero">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <p class="hero-kicker"><span data-l="it">Cosimo Bombardieri &middot; Risorse per Compositori</span><span data-l="en">Cosimo Bombardieri &middot; Resources for Composers</span></p>
-      <h1 class="hero-title"><em data-l="it">Concorsi</em><em data-l="en">Composition</em><span data-l="it">di Composizione</span><span data-l="en">Competitions</span></h1>
-      <p class="hero-sub"><span data-l="it">Tutte le call aperte &middot; 2026&ndash;2027 &middot; Aggiornamento automatico ogni luned&igrave;</span><span data-l="en">All active calls &middot; 2026&ndash;2027 &middot; Auto-updated every Monday</span></p>
-    </div>
-    <div class="hero-actions">
-      <div class="lang-toggle">
-        <button class="lang-btn on" id="btnIT" onclick="setLang('it')">IT</button>
-        <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+
+<!-- ═══════ HEADER ═══════ -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <p class="header-kicker">Cosimo Bombardieri</p>
+    <h1 class="site-title">
+      Composition<br><em>Competitions Worldwide</em>
+    </h1>
+    <div class="header-meta">
+      <p class="header-tagline">
+        <span data-l="it">43 concorsi attivi &middot; 7 fonti monitorate &middot; Aggiornamento ogni luned&igrave;</span>
+        <span data-l="en">43 active competitions &middot; 7 monitored sources &middot; Updated every Monday</span>
+      </p>
+      <div class="lang-row">
+        <div class="upd-label">
+          <span data-l="it">Aggiornato: </span>
+          <span data-l="en">Updated: </span>
+          <strong><span id="updDate">04 March 2026</span></strong>
+        </div>
+        <div class="lang-toggle">
+          <button class="lang-btn on" id="btnIT" onclick="setLang('it')">IT</button>
+          <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+        </div>
       </div>
-      <div class="last-upd"><span data-l="it">Aggiornato: </span><span data-l="en">Updated: </span><span id="updDate">04 March 2026</span></div>
     </div>
   </div>
 </header>
-<div class="stats-row">
-  <div class="stats-inner">
-    <div class="stat"><span class="stat-num" id="statTotal">0</span><span class="stat-lbl" data-l="it">Concorsi</span><span class="stat-lbl" data-l="en">Total</span></div>
-    <div class="stat-div"></div>
-    <div class="stat"><span class="stat-num" id="statHot">0</span><span class="stat-lbl" data-l="it">Scadenza urgente</span><span class="stat-lbl" data-l="en">Urgent deadline</span></div>
-    <div class="stat-div"></div>
-    <div class="stat"><span class="stat-num" id="statFree">0</span><span class="stat-lbl" data-l="it">Gratuiti</span><span class="stat-lbl" data-l="en">Free entry</span></div>
-    <div class="stat-div"></div>
-    <div class="stat"><span class="stat-num" id="statSoon">0</span><span class="stat-lbl" data-l="it">Scadenza &lt;90gg</span><span class="stat-lbl" data-l="en">Closing soon</span></div>
-  </div>
-  <div class="showing-lbl"><span data-l="it">Visualizzati: </span><span data-l="en">Showing: </span><strong id="cnt">0</strong></div>
-</div>
-<div class="filter-bar">
-  <div class="filter-scroll">
-    <div class="fgroup">
-      <span class="flbl" data-l="it">Categoria</span><span class="flbl" data-l="en">Category</span>
-      <button class="chip on" data-f="cat" data-v="all" onclick="setFilter(this)"><span data-l="it">Tutti</span><span data-l="en">All</span></button>
-      <button class="chip" data-f="cat" data-v="orch" onclick="setFilter(this)"><span class="cdot" style="background:#c8a96e"></span>Orchestra</button>
-      <button class="chip" data-f="cat" data-v="chamb" onclick="setFilter(this)"><span class="cdot" style="background:#a8a898"></span><span data-l="it">Camera</span><span data-l="en">Chamber</span></button>
-      <button class="chip" data-f="cat" data-v="solo" onclick="setFilter(this)"><span class="cdot" style="background:#888878"></span>Solo</button>
-      <button class="chip" data-f="cat" data-v="choral" onclick="setFilter(this)"><span class="cdot" style="background:#b898c8"></span><span data-l="it">Corale</span><span data-l="en">Choral</span></button>
-      <button class="chip" data-f="cat" data-v="vocal" onclick="setFilter(this)"><span class="cdot" style="background:#98b8c8"></span><span data-l="it">Vocale</span><span data-l="en">Vocal</span></button>
-      <button class="chip" data-f="cat" data-v="mixed" onclick="setFilter(this)"><span class="cdot" style="background:#c8a888"></span><span data-l="it">Fiati</span><span data-l="en">Wind</span></button>
-      <button class="chip" data-f="cat" data-v="electro" onclick="setFilter(this)"><span class="cdot" style="background:#88c8c8"></span><span data-l="it">Elettro</span><span data-l="en">Electro</span></button>
-      <button class="chip" data-f="cat" data-v="grant" onclick="setFilter(this)"><span class="cdot" style="background:#c8c880"></span><span data-l="it">Premi</span><span data-l="en">Grants</span></button>
+
+<!-- ═══════ STATS BAR ═══════ -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item">
+      <span class="stat-n" id="statTotal">0</span>
+      <span class="stat-l" data-l="it">Concorsi</span>
+      <span class="stat-l" data-l="en">Competitions</span>
     </div>
-    <div class="fgroup">
-      <span class="flbl" data-l="it">Scadenza</span><span class="flbl" data-l="en">Deadline</span>
-      <button class="chip on" data-f="urg" data-v="all" onclick="setFilter(this)"><span data-l="it">Tutte</span><span data-l="en">All</span></button>
-      <button class="chip" data-f="urg" data-v="hot" onclick="setFilter(this)" style="color:#e07070"><span data-l="it">Urgente (&lt;30gg)</span><span data-l="en">Urgent (&lt;30d)</span></button>
-      <button class="chip" data-f="urg" data-v="soon" onclick="setFilter(this)" style="color:#d4a050"><span data-l="it">Presto (&lt;90gg)</span><span data-l="en">Soon (&lt;90d)</span></button>
-      <button class="chip" data-f="urg" data-v="open" onclick="setFilter(this)" style="color:#70c090"><span data-l="it">Aperto</span><span data-l="en">Open</span></button>
+    <div class="stat-item">
+      <span class="stat-n" id="statHot">0</span>
+      <span class="stat-l" data-l="it">Urgenti</span>
+      <span class="stat-l" data-l="en">Urgent</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-n" id="statSoon">0</span>
+      <span class="stat-l" data-l="it">In scadenza</span>
+      <span class="stat-l" data-l="en">Closing soon</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-n" id="statFree">0</span>
+      <span class="stat-l" data-l="it">Gratuiti</span>
+      <span class="stat-l" data-l="en">Free entry</span>
     </div>
   </div>
 </div>
-<div class="search-bar">
-  <div class="search-wrap">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="search" class="search-input" id="searchInput" placeholder="Cerca titolo, paese, strumento… / Search title, country, forces…" oninput="render()">
+
+<!-- ═══════ CONTROLS ═══════ -->
+<div class="controls">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="search" class="search-input" id="searchInput"
+        placeholder="Cerca titolo, paese, organico… / Search…"
+        oninput="render()">
+    </div>
+    <div class="chips-row" id="urgChips">
+      <span class="chips-label" data-l="it">Scadenza:</span>
+      <span class="chips-label" data-l="en">Deadline:</span>
+      <button class="chip on" data-f="urg" data-v="all" onclick="setFilter(this)">
+        <span data-l="it">Tutti</span><span data-l="en">All</span>
+      </button>
+      <button class="chip hot-chip" data-f="urg" data-v="hot" onclick="setFilter(this)">
+        ● <span data-l="it">Urgente</span><span data-l="en">Urgent</span>
+      </button>
+      <button class="chip soon-chip" data-f="urg" data-v="soon" onclick="setFilter(this)">
+        ● <span data-l="it">Presto</span><span data-l="en">Soon</span>
+      </button>
+      <button class="chip open-chip" data-f="urg" data-v="open" onclick="setFilter(this)">
+        ● <span data-l="it">Aperto</span><span data-l="en">Open</span>
+      </button>
+    </div>
+    <label class="free-label">
+      <input type="checkbox" id="freeOnly" onchange="render()">
+      <span data-l="it">Solo gratuiti</span>
+      <span data-l="en">Free only</span>
+    </label>
+    <div class="results-count">
+      <span data-l="it">Risultati: </span>
+      <span data-l="en">Results: </span>
+      <strong id="cnt">0</strong>
+    </div>
   </div>
-  <label class="free-label"><input type="checkbox" id="freeOnly" onchange="render()"><span data-l="it">Solo gratuiti</span><span data-l="en">Free entry only</span></label>
 </div>
-<div class="sources-strip">
-  <span class="s-lbl" data-l="it">Fonti aggiornate automaticamente:</span><span class="s-lbl" data-l="en">Auto-updated sources:</span>
-  <a class="s-link" href="https://www.musicalchairs.info/composer/competitions?sort=cd" target="_blank">Musical Chairs</a>
-  <a class="s-link" href="https://scorefol.io/opportunities" target="_blank">Scorefolio</a>
-  <a class="s-link" href="https://live-composers.pantheonsite.io/" target="_blank">Live Composers</a>
-  <a class="s-link" href="https://composersforum.org/opportunities" target="_blank">American Composers Forum</a>
-  <a class="s-link" href="http://www.cidim.it/cidim/content/314710" target="_blank">CIDIM</a>
-  <a class="s-link" href="https://iawm.org/snm-competition/" target="_blank">IAWM</a>
-  <a class="s-link" href="https://nycemf.org/" target="_blank">NYCEMF</a>
+
+<!-- ═══════ CATEGORY FILTER ROW ═══════ -->
+<div class="filter-row2">
+  <div class="filter-row2-inner">
+    <span class="chips-label" data-l="it">Categoria:</span>
+    <span class="chips-label" data-l="en">Category:</span>
+    <button class="chip on" data-f="cat" data-v="all" onclick="setFilter(this)">
+      <span data-l="it">Tutte</span><span data-l="en">All</span>
+    </button>
+    <button class="chip" data-f="cat" data-v="orch" onclick="setFilter(this)">
+      <span class="cdot" style="background:#1a1a1a"></span>Orchestra
+    </button>
+    <button class="chip" data-f="cat" data-v="chamb" onclick="setFilter(this)">
+      <span class="cdot" style="background:#5a4a2a"></span>
+      <span data-l="it">Camera</span><span data-l="en">Chamber</span>
+    </button>
+    <button class="chip" data-f="cat" data-v="solo" onclick="setFilter(this)">
+      <span class="cdot" style="background:#2a4a6a"></span>Solo
+    </button>
+    <button class="chip" data-f="cat" data-v="choral" onclick="setFilter(this)">
+      <span class="cdot" style="background:#4a2a6a"></span>
+      <span data-l="it">Corale</span><span data-l="en">Choral</span>
+    </button>
+    <button class="chip" data-f="cat" data-v="vocal" onclick="setFilter(this)">
+      <span class="cdot" style="background:#2a5a5a"></span>
+      <span data-l="it">Vocale</span><span data-l="en">Vocal</span>
+    </button>
+    <button class="chip" data-f="cat" data-v="mixed" onclick="setFilter(this)">
+      <span class="cdot" style="background:#6a3a1a"></span>
+      <span data-l="it">Fiati</span><span data-l="en">Wind</span>
+    </button>
+    <button class="chip" data-f="cat" data-v="electro" onclick="setFilter(this)">
+      <span class="cdot" style="background:#1a5a5a"></span>
+      <span data-l="it">Elettro</span><span data-l="en">Electro</span>
+    </button>
+    <button class="chip" data-f="cat" data-v="grant" onclick="setFilter(this)">
+      <span class="cdot" style="background:#4a5a1a"></span>
+      <span data-l="it">Premi</span><span data-l="en">Grants</span>
+    </button>
+  </div>
 </div>
-<div class="grid-zone">
+
+<!-- ═══════ GRID ═══════ -->
+<div class="grid-wrap">
   <div class="grid" id="grid">
-    <div id="empty-state"><span data-l="it">Nessun concorso trovato.</span><span data-l="en">No competitions found.</span></div>
+    <div class="empty-state" id="emptyState">
+      <p>
+        <span data-l="it">Nessun concorso trovato.</span>
+        <span data-l="en">No competitions found.</span>
+      </p>
+    </div>
   </div>
 </div>
-<footer class="page-footer">
-  <div class="footer-sig"><strong>Cosimo Bombardieri</strong> &middot; <em>Risorse per compositori</em></div>
-  <div class="footer-note"><span data-l="it">Aggiornamento automatico ogni luned&igrave; &middot; Verificare sempre il sito ufficiale del concorso</span><span data-l="en">Auto-updated every Monday &middot; Always verify details on the official competition website</span></div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <div class="footer-section-title">
+        <span data-l="it">Fonti monitorate automaticamente ogni luned&igrave;</span>
+        <span data-l="en">Sources automatically monitored every Monday</span>
+      </div>
+      <div class="sources-grid">
+        <a class="src-link" href="https://www.musicalchairs.info/composer/competitions?sort=cd" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          Musical Chairs
+        </a>
+        <a class="src-link" href="https://scorefol.io/opportunities" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          Scorefolio
+        </a>
+        <a class="src-link" href="https://live-composers.pantheonsite.io/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          Live Composers
+        </a>
+        <a class="src-link" href="https://composersforum.org/opportunities" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          American Composers Forum
+        </a>
+        <a class="src-link" href="http://www.cidim.it/cidim/content/314710" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          CIDIM
+        </a>
+        <a class="src-link" href="https://iawm.org/snm-competition/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          IAWM
+        </a>
+        <a class="src-link" href="https://nycemf.org/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+          NYCEMF
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-sig">
+        <strong>Cosimo Bombardieri</strong> &nbsp;&middot;&nbsp;
+        <em><span data-l="it">Risorse per compositori</span><span data-l="en">Resources for composers</span></em>
+      </div>
+      <div class="footer-note">
+        <span data-l="it">Aggiornamento automatico ogni luned&igrave; &middot; Verificare sempre il sito ufficiale del concorso</span>
+        <span data-l="en">Auto-updated every Monday &middot; Always verify details on the official competition website</span>
+      </div>
+    </div>
+  </div>
 </footer>
+
 <script>
-const BASELINE_DATA = [{"cat":"orch","title":"POI International Composition Competition 2026","org":"Premier Orchestral Institute — Jackson, MS, USA","badge":"Orchestra · Folk","deadline":"15 Mar 2026","urgency":"hot","free":false,"flag":"🇺🇸 Jackson, MS, USA","link":"https://www.musicalchairs.info/competitions/5676","prize":"World premiere performance at POI (June 7–14, 2026)","forces":"Orchestra. Must incorporate folk music from composer's country.","age":"Any age","nationality":"Open internationally","notes":"","source":"musicalchairs"},{"cat":"choral","title":"John Sanders Memorial Competition for Young Composers 2026","org":"Three Choirs Festival — Gloucester Cathedral, UK","badge":"Choral · Liturgical","deadline":"27 Mar 2026","urgency":"hot","free":true,"flag":"🇬🇧 Gloucester, UK","link":"https://www.musicalchairs.info/competitions/5281","prize":"£1,000 + publishing contract + world premiere at Three Choirs Festival","forces":"SATB choral; suitable for cathedral choir + newly rebuilt organ","age":"Young composers","nationality":"Open internationally","notes":"","source":"musicalchairs"},{"cat":"chamb","title":"Coopman Music Foundation 40plus Composition Competition 2026","org":"Coopman Music Foundation / Rosalie Ensemble — London, UK","badge":"Chamber · 40+ Composers","deadline":"31 Mar 2026","urgency":"hot","free":false,"flag":"🇬🇧 London, UK","link":"https://www.musicalchairs.info/competitions/5826","prize":"£2,000 + world premiere at Trinity Laban Conservatoire + recording","forces":"Chamber ensemble (Rosalie Ensemble)","age":"Over 40 years old only","nationality":"Open internationally","notes":"Results announced ~1 May 2026.","source":"musicalchairs"},{"cat":"choral","title":"Japan International Choral Composition Competition 2026","org":"ICOT — Tokyo, Japan","badge":"Choral","deadline":"31 Mar 2026","urgency":"hot","free":false,"flag":"🇯🇵 Tokyo, Japan","link":"https://icccj.icot.or.jp/","prize":"1st: ¥100,000 + diploma + published by Edition ICOT","forces":"Any voice combination","age":"Any age","nationality":"Open internationally","notes":"Top works may be set piece for 9th Tokyo International Choir Competition 2027.","source":"direct"},{"cat":"vocal","title":"The 2026 Lawson-May Award for Composition","org":"Solent Music Festival — Lymington, UK","badge":"Vocal-Instrumental","deadline":"1 Apr 2026","urgency":"hot","free":false,"flag":"🇬🇧 Lymington, UK","link":"https://www.musicalchairs.info/competitions/5376","prize":"£3,500 + £500 Solent Prize + world premiere May 2026","forces":"Narrator + min 2 of: piano, violin, cello, clarinet. 10–20 min.","age":"All ages","nationality":"Open internationally","notes":"6th edition. Work must be unpublished.","source":"musicalchairs"},{"cat":"vocal","title":"Fourth Mansurian International Competition 2025–2026","org":"Mansurian Foundation — Yerevan, Armenia","badge":"Vocal-Instrumental","deadline":"1 Apr 2026","urgency":"hot","free":false,"flag":"🇦🇲 Yerevan, Armenia","link":"https://www.musicalchairs.info/competitions/5510","prize":"Details on official website","forces":"Voice + 1–2 instruments (fl, cl, vln, vla, vc, pno). 6–12 min.","age":"Any age","nationality":"Open internationally","notes":"Original, unpublished, unrecorded, never publicly performed.","source":"musicalchairs"},{"cat":"chamb","title":"Third Annual Kreitler Commission Competition","org":"Summermusik / Cincinnati Chamber Orchestra — USA","badge":"Chamber Orchestra","deadline":"6 Apr 2026","urgency":"hot","free":false,"flag":"🇺🇸 Cincinnati, OH, USA","link":"https://summermusik.org/competition","prize":"$10,000 + 4 performances (premiere Aug 2027) + video recording + travel","forces":"Chamber orchestra. 12–20 min.","age":"Any age","nationality":"International (blind)","notes":"Partner: Cincinnati CO, Pittsburgh CO, Triangle CO, Reno CO.","source":"direct"},{"cat":"chamb","title":"NuovoSound Ensemble 2026 Inaugural Call for Scores","org":"NuovoSound Ensemble — Fort Worth, TX, USA","badge":"Chamber · Ensemble","deadline":"Spring 2026","urgency":"soon","free":false,"flag":"🇺🇸 Fort Worth, TX, USA","link":"https://scorefol.io/opportunities","prize":"World premiere at free Spring 2026 concert. Entry fee: $15.","forces":"Chamber music for NuovoSound Ensemble","age":"All living composers","nationality":"International","notes":"Concert 26 April 2026, Robert Carr Chapel.","source":"scorefolio"},{"cat":"solo","title":"International Accordion Composition Competition Jaume Padrós 2026","org":"Acord Edicions / Festival Mixtur — Barcelona, Spain","badge":"Solo · Accordion","deadline":"Spring 2026","urgency":"soon","free":true,"flag":"🇪🇸 Barcelona, Spain","link":"https://scorefol.io/opportunities","prize":"€2,800","forces":"Accordion. Centenary works for Jaume Padrós Montoriol (1926–2026).","age":"Open to all","nationality":"International","notes":"Centenary. With Festival Mixtur (Barcelona).","source":"scorefolio"},{"cat":"chamb","title":"Korean Chamber Orchestra Emerging Composers Competition 2026","org":"Korean Chamber Orchestra — South Korea","badge":"Chamber · Emerging Composers","deadline":"Spring 2026","urgency":"soon","free":false,"flag":"🇰🇷 South Korea","link":"https://scorefol.io/opportunities","prize":"₩5,000,000 KRW (~$3,700) + performance with KCO. Entry fee: ₩200,000.","forces":"Original chamber works for KCO instrumentation","age":"Emerging / young composers","nationality":"International","notes":"","source":"scorefolio"},{"cat":"mixed","title":"International Music Competition OPUS 2026 — 8th Edition","org":"Krakow, Poland","badge":"Mixed / Various","deadline":"14 Apr 2026","urgency":"soon","free":false,"flag":"🇵🇱 Krakow, Poland","link":"https://www.musicalchairs.info/competitions/5782","prize":"Details on official site","forces":"Multiple categories including composition","age":"Multiple age categories","nationality":"Open internationally","notes":"","source":"musicalchairs"},{"cat":"electro","title":"Métamorphoses International Acousmatic Composition Competition 2026","org":"Musiques & Recherches — Ohain, Belgium","badge":"Electroacoustic · Acousmatic","deadline":"15 Apr 2026","urgency":"soon","free":false,"flag":"🇧🇪 Belgium","link":"https://www.musiques-recherches.be/en","prize":"Cat. A (≤28): CD release (FREE). Cat. B (≤50): €2,500 + €750 audience + studio residency.","forces":"Acousmatic music 8–15 min. Studio-composed, loudspeaker. Stereo or 3–8 channels.","age":"Cat. A: ≤28 / students · Cat. B: ≤50","nationality":"International","notes":"Biennial since 1982. Finals at L'Espace du Son, Brussels.","source":"direct"},{"cat":"chamb","title":"ACT International Composition Competition 2026","org":"American College of Thessaloniki / Music Anatolia College — Greece","badge":"Chamber · Orchestral","deadline":"19 Apr 2026","urgency":"soon","free":false,"flag":"🇬🇷 Thessaloniki, Greece","link":"https://www.musicanatoliacollege.com/composition-competition-program/composition-competition","prize":"1st: Publication by Panas Music + plaque. 2nd–3rd: Laureate diploma. All performed at TCH.","forces":"Chamber (fl, cl, vln, vc, pno — min. 2) or symphonic. Max 5 min.","age":"Open to all","nationality":"International","notes":"Performed by ACT Ensemble and MOYSA Youth Orchestra.","source":"direct"},{"cat":"vocal","title":"Concorso Fondazione Monini — Nuove Composizioni Vocali da Camera","org":"Teatro Lirico Sperimentale & Fondazione Monini — Spoleto, Italy","badge":"Vocal · Chamber","deadline":"20 Apr 2026","urgency":"soon","free":false,"flag":"🇮🇹 Spoleto, Italy","link":"https://www.musicalchairs.info/competitions/5837","prize":"Details on official site","forces":"New vocal chamber compositions","age":"—","nationality":"Open internationally","notes":"In memoria del Maestro Alberto Tarchini.","source":"musicalchairs"},{"cat":"solo","title":"MusEcology — International Call for Scores 2026","org":"Musica del Vivo — Rome, Italy","badge":"Solo + Piano","deadline":"22 Apr 2026","urgency":"soon","free":false,"flag":"🇮🇹 Rome, Italy","link":"https://www.musicalchairs.info/competitions/5721","prize":"Selected works performed in 2026/2027 concert season","forces":"Solo instrument + piano. Theme: ecology","age":"Not specified","nationality":"Open internationally","notes":"","source":"musicalchairs"},{"cat":"chamb","title":"Sobrio Festival International Competition for Young Composers 2026","org":"Sobrio Festival / Vincent Vogel (Berliner Philharmoniker)","badge":"Chamber · Duo","deadline":"25 Apr 2026","urgency":"soon","free":false,"flag":"🇨🇭 Sobrio, Switzerland","link":"https://www.musicalchairs.info/competitions/5395","prize":"CHF 3,000 + world premiere at Sobrio Festival","forces":"Timpani + violin duo. 10–15 min.","age":"Under 40","nationality":"Open internationally","notes":"Original, unpublished.","source":"musicalchairs"},{"cat":"chamb","title":"Earplay Donald Aird Composers Competition 2026","org":"Earplay — San Francisco, USA","badge":"Chamber ± Electronics","deadline":"30 Apr 2026","urgency":"soon","free":false,"flag":"🇺🇸 San Francisco, USA","link":"https://www.earplay.org/donald-aird-competition","prize":"$1,500 + performance by Earplay in 2027 season","forces":"1–6 players (fl, cl, pno, vln, vla, vc). Optional electronics.","age":"Any age","nationality":"Open internationally","notes":"Previously performed works accepted.","source":"direct"},{"cat":"orch","title":"11th International Composition Prize SEM 2026","org":"Sacile, Italy / Pizzicato Verlag Helvetia","badge":"Orchestra","deadline":"30 Apr 2026","urgency":"soon","free":false,"flag":"🇮🇹 Sacile, Italy","link":"https://www.musicalchairs.info/competitions/5708","prize":"€2,500 + live performance + published by Pizzicato Verlag","forces":"Symphony orchestra without soloists. 4–8 min.","age":"No age limit","nationality":"Open internationally","notes":"Unpublished, unawarded, unperformed.","source":"musicalchairs"},{"cat":"chamb","title":"Call for Scores 2026 — Duo Regards (Violin & Cello)","org":"Duo Regards / Les Musicales d'Assy — Paris, France","badge":"Chamber · Duo","deadline":"1 May 2026","urgency":"soon","free":true,"flag":"🇫🇷 Paris, France","link":"https://www.lesmusicalesdassy.fr","prize":"Working session Paris + performance + professional recording","forces":"Violin + cello. No electronics. Max 20 min.","age":"Not specified","nationality":"Open internationally","notes":"Results announced 20 May 2026.","source":"direct"},{"cat":"electro","title":"IAWM Search for New Music Competition 2026","org":"International Alliance for Women in Music — International","badge":"Multiple · Women Composers","deadline":"4 May 2026","urgency":"soon","free":false,"flag":"🌍 International","link":"https://iawm.org/snm-competition/","prize":"Category-specific prizes. Winners announced August 2026.","forces":"(1) Large chamber 9+ instr.; (2) Electroacoustic; (3) Choral/vocal; (4) Sound installation.","age":"Open; IAWM membership required","nationality":"International","notes":"One entry per year. Anonymous via New Music Engine.","source":"direct"},{"cat":"chamb","title":"2028 Azrieli Music Prizes","org":"Azrieli Foundation — Toronto, Canada","badge":"Chamber · Commission","deadline":"6 May 2026","urgency":"soon","free":true,"flag":"🇨🇦 Toronto, Canada","link":"https://www.azrielifoundation.org/amp/","prize":"$50,000 CAD per prize × 3 prizes + world premiere Gala Montreal 2028","forces":"Chamber music up to 15 musicians (3 prizes: Jewish, Canadian, International)","age":"Not specified","nationality":"International","notes":"Total package exceeds $250,000 CAD per prize.","source":"direct"},{"cat":"mixed","title":"George Enescu International Competition 2026 — Composition","org":"George Enescu Festival Foundation — Bucharest, Romania","badge":"Composition + Performance","deadline":"10 May 2026","urgency":"soon","free":false,"flag":"🇷🇴 Bucharest, Romania","link":"https://www.musicalchairs.info/competitions/5651","prize":"Prizes + performance at next Enescu Festival + Masterclass","forces":"Specifics in official regulations","age":"Young talents","nationality":"Open internationally","notes":"20th edition. Director: Cristian Măcelaru. 23 Aug–19 Sep 2026.","source":"musicalchairs"},{"cat":"electro","title":"New York City Electroacoustic Music Festival (NYCEMF) 2026","org":"NYCEMF — New York City, USA","badge":"Electroacoustic · Festival","deadline":"15 May 2026","urgency":"soon","free":false,"flag":"🇺🇸 New York, USA","link":"https://nycemf.org/","prize":"Performance at festival (8-ch and 16-ch spaces). Student 50% discount.","forces":"Fixed media (≤16-ch); live electronics (≤8-ch); instruments + electronics; video.","age":"Open to all","nationality":"International","notes":"Peer-reviewed.","source":"direct"},{"cat":"grant","title":"ASCAP Foundation Morton Gould Young Composer Awards 2026","org":"The ASCAP Foundation — New York, USA","badge":"Award · Concert Music","deadline":"Annual — Feb","urgency":"open","free":true,"flag":"🇺🇸 New York, USA","link":"https://www.ascapfoundation.org/programs/awards/young-composer-awards","prize":"Cash prizes + Leo Kaplan Award for top winner","forces":"Any original concert music — no arrangements","age":"Ages 13–29; US citizens/residents/student visa","nationality":"USA / US visa holders","notes":"Founded 1979. Past winners: Higdon, David Lang, Julia Wolfe.","source":"direct"},{"cat":"grant","title":"BMI Student Composer Awards 2026","org":"BMI Foundation — New York, USA","badge":"Award · Student Composers","deadline":"Annual — Jan","urgency":"open","free":true,"flag":"🇺🇸 New York, USA","link":"https://bmifoundation.org/applications/bmifoundation/awards/bmi_student_composer_awards","prize":"Cash prizes across multiple categories","forces":"Any genre of concert music","age":"27 and under; enrolled in accredited programs","nationality":"Western Hemisphere","notes":"Annual since 1951.","source":"direct"},{"cat":"solo","title":"Arizona Flute Society Composition Competition 2026","org":"Arizona Flute Society — Arizona, USA","badge":"Solo · Flute","deadline":"Spring 2026","urgency":"open","free":true,"flag":"🇺🇸 Arizona, USA","link":"https://www.arizonaflutesociety.org/composition-competition","prize":"$250 USD","forces":"Solo flute; flute + piano; or flute + electronics. All flute types.","age":"Open to all","nationality":"International","notes":"New and existing works eligible.","source":"direct"},{"cat":"chamb","title":"Soundbox Fellowship Program for Composers 2026","org":"Soundbox Ventures — July 22–27, 2026","badge":"Fellowship · Residency","deadline":"Summer 2026","urgency":"open","free":false,"flag":"🇺🇸 USA","link":"https://scorefol.io/opportunities","prize":"Intensive week: rehearsals, lessons, critiques. Entry fee: $20.","forces":"Composition for resident performers","age":"All composers","nationality":"International","notes":"Focus on second performances. July 22–27, 2026.","source":"scorefolio"},{"cat":"grant","title":"New Music USA Creator Fund 2026","org":"New Music USA — USA (regional)","badge":"Grant · Individual Creator","deadline":"Fall 2026","urgency":"open","free":true,"flag":"🇺🇸 USA","link":"https://newmusicusa.org/program/new-music-creator-fund/","prize":"Average $3,000–$5,000 (max $5,000). Thea Musgrave Grant: $10,000.","forces":"Any genre of new music; project-based funding","age":"Open (students NOT eligible)","nationality":"USA-based","notes":"Peer-reviewed by 40–50 panelists.","source":"direct"},{"cat":"choral","title":"Cambridge Chamber Singers Composition Competition 2026–2027","org":"Cambridge Chamber Singers — Boston, MA, USA","badge":"Choral · A cappella","deadline":"Announced Summer 2026","urgency":"open","free":true,"flag":"🇺🇸 Boston, MA, USA","link":"https://cambridgechambersingers.org/compcomp/","prize":"$1,000 + performance at two Boston-area concerts","forces":"A cappella, 4–6 part mixed choir. 3–6 min.","age":"No restrictions","nationality":"International","notes":"Max 2 submissions. Anonymous judging.","source":"direct"},{"cat":"grant","title":"Opportunity Type","org":"Live Composers","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://live-composers.pantheonsite.io/opps/results/taxonomy%3A1","prize":"","forces":"","age":"","nationality":"International","notes":"","source":"livecomposers"},{"cat":"chamb","title":"Expiration Date?","org":"Live Composers","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://live-composers.pantheonsite.io/opps/results/taxonomy%3A15","prize":"","forces":"","age":"","nationality":"International","notes":"","source":"livecomposers"},{"cat":"chamb","title":"Expiration of Opportunity","org":"Live Composers","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://live-composers.pantheonsite.io/opps/results/field_expiration%3A2026","prize":"","forces":"","age":"","nationality":"International","notes":"","source":"livecomposers"},{"cat":"chamb","title":"Entry Fee?","org":"Live Composers","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://live-composers.pantheonsite.io/opps/results/taxonomy%3A13","prize":"","forces":"","age":"","nationality":"International","notes":"","source":"livecomposers"},{"cat":"grant","title":"Submit Your Call for Creators","org":"American Composers Forum","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://composersforum.org/opportunities/submit-an-opportunity/","prize":"","forces":"","age":"","nationality":"International","notes":"","source":"americancomposersforum"},{"cat":"chamb","title":"Contribute","org":"American Composers Forum","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://composersforum.org/contribute/ways-to-give/","prize":"","forces":"","age":"","nationality":"International","notes":"","source":"americancomposersforum"},{"cat":"electro","title":"International Alliance for Women in Music","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"electro","title":"Ruth Anderson Commission Prize ($1,000)","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"electro","title":"Katy Abbott Prize ($500)","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"electro","title":"Miriam Gideon Prize ($500)","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"electro","title":"Libby Larsen Prize ($500)","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"electro","title":"Portland Jazz Composers Ensemble Prize ($500)","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"electro","title":"PatsyLu Prize ($500)","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"electro","title":"Pauline Oliveros New Genre Prize ($300)","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"electro","title":"Alex Shapiro Prize ($500 and mentorship/consultation from Alex Shapiro)","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"electro","title":"Judith Lang Zaimont Prize ($400)","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"electro","title":"Leah Reid Electroacoustic and Music Technology Prize ($400)","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"electro","title":"International Choral/Vocal Ensemble Prize ($500)","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"electro","title":"Global Music Prize ($500)","org":"IAWM","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.newmusicengine.org/categories/43rd-IAWM-Search-for-New-Music-Competition/index.html","prize":"$1,000","forces":"","age":"","nationality":"International","notes":"","source":"iawm"},{"cat":"chamb","title":"NYCEMF 2026","org":"NYCEMF","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://nycemf.org/","prize":"","forces":"","age":"","nationality":"International","notes":"","source":"nycemf"},{"cat":"chamb","title":"Get In Touch","org":"NYCEMF","badge":"Competition","deadline":"Verify deadline","urgency":"open","free":false,"flag":"🌍","link":"https://www.facebook.com/NewYorkCityElectroacousticMusicFestival","prize":"","forces":"","age":"","nationality":"International","notes":"","source":"nycemf"},{"cat":"orch","title":"The Brusa Foundation Award — 3rd Edition 2026","org":"Brusa Foundation — London, UK","badge":"Orchestra · Tonal","deadline":"30 May 2026","urgency":"open","free":true,"flag":"🇬🇧 London, UK","link":"http://www.brusafoundation.org","prize":"£5,000","forces":"Symphonic orchestra, one movement. Max 3.3.3.3–4.3.3.1, Harp, Piano, Timp, Perc, Strings.","age":"18–30","nationality":"Open internationally","notes":"","source":"direct"},{"cat":"chamb","title":"Composers / Conductors Workshop — FontanaMIX VI Edition","org":"FontanaMIXensemble — Bologna, Italy","badge":"Chamber · Workshop","deadline":"15 Jun 2026","urgency":"open","free":true,"flag":"🇮🇹 Bologna, Italy","link":"https://www.musicalchairs.info/competitions/5819","prize":"Free 4-day workshop 21–24 Oct 2026 + rehearsal + concert + accommodation","forces":"New work for FontanaMIXensemble","age":"Not specified","nationality":"Open internationally","notes":"4 composers/conductors selected. Travel at own cost.","source":"musicalchairs"},{"cat":"mixed","title":"The Respighi Prize — 15th Edition","org":"Respighi Prize — New York, USA","badge":"Composition + Solo","deadline":"30 Jun 2026","urgency":"open","free":false,"flag":"🇺🇸 New York, USA","link":"https://www.musicalchairs.info/competitions/5846","prize":"Details on official site","forces":"Composers, soloists, conductors (multiple categories)","age":"Not specified","nationality":"Open internationally","notes":"","source":"musicalchairs"},{"cat":"choral","title":"Ponce International Composition Competition","org":"Ponce, Puerto Rico","badge":"Choral · A cappella","deadline":"1 Jul 2026","urgency":"open","free":false,"flag":"🇵🇷 Ponce, Puerto Rico","link":"https://www.musicalchairs.info/competitions/5804","prize":"$1,000 + listing in international composer database","forces":"A cappella choral; all voice combinations","age":"Not specified","nationality":"Open internationally","notes":"Adjudicated by international panel.","source":"musicalchairs"},{"cat":"chamb","title":"NMGCS V International Composition Competition","org":"National Music & Global Culture Society — New York, USA","badge":"Solo / Small Ensemble","deadline":"1 Jul 2026","urgency":"open","free":false,"flag":"🇺🇸 New York, USA","link":"https://nm-gcs.org","prize":"$3,500 + performance at Lincoln Center + published in USA","forces":"Solo or ensemble up to 5 instruments. Must incorporate Turkic folk songs. Max 15 min.","age":"No age limit","nationality":"Open internationally","notes":"","source":"direct"},{"cat":"orch","title":"2nd International Composition Competition for Symphonic Flamenco","org":"OSFE — Córdoba, Spain","badge":"Orchestra · Flamenco","deadline":"31 Jul 2026","urgency":"open","free":false,"flag":"🇪🇸 Córdoba, Spain","link":"https://www.musicalchairs.info/competitions/5806","prize":"1st: €6,000 + edition + world premiere OSFE Nov 2026. Extra: €2,000. Special: €1,000.","forces":"Symphony orchestra. Based on flamenco styles. No arrangements.","age":"Not specified","nationality":"Open internationally","notes":"","source":"musicalchairs"},{"cat":"chamb","title":"Bartók World Competition — Composition 2026","org":"Liszt Academy of Music — Budapest, Hungary","badge":"Chamber · String Quartet","deadline":"25 Aug 2026","urgency":"open","free":false,"flag":"🇭🇺 Budapest, Hungary","link":"https://bartokworldcompetition.hu/en","prize":"€10,000 total: 1st €5,000 · 2nd €3,000 · 3rd €2,000 + world premiere Solti Hall + published EMB","forces":"Original string quartet. 6–8 min.","age":"Under 40","nationality":"Open internationally","notes":"","source":"direct"},{"cat":"mixed","title":"USNA Band — Charles A. Zimmermann Prize 2026","org":"U.S. Naval Academy Band — Annapolis, MD, USA","badge":"Wind / Brass · Fanfare","deadline":"31 Aug 2026","urgency":"open","free":true,"flag":"🇺🇸 Annapolis, MD, USA","link":"https://www.usna.edu/USNABand/scores/index.php","prize":"$1,000 + premiere Veterans Day Nov 11, 2026 + recording 2027","forces":"Fanfare for Wind Ensemble, Brass Ensemble, or Brass Quintet.","age":"Open to all","nationality":"International","notes":"Anonymous submission. Composer retains all rights.","source":"direct"},{"cat":"orch","title":"Toru Takemitsu Composition Award 2026","org":"Tokyo Opera City Cultural Foundation — Tokyo, Japan","badge":"Orchestra","deadline":"30 Sep 2026","urgency":"open","free":true,"flag":"🇯🇵 Tokyo, Japan","link":"https://www.operacity.jp/en/concert/award/","prize":"¥3,000,000 (~$20,000 USD) + performance by Tokyo Philharmonic Orchestra","forces":"Full orchestra. Any format except concerto.","age":"35 or under","nationality":"Open internationally","notes":"Physical score submission only — no digital.","source":"direct"},{"cat":"orch","title":"National Young Composers Challenge (NYCC) 2026","org":"National Young Composers Challenge — USA","badge":"Youth · Orchestra / Chamber","deadline":"1 Oct 2026","urgency":"open","free":true,"flag":"🇺🇸 USA","link":"https://www.youngcomposerschallenge.org/guidelines.php","prize":"6 winners: professional performance at the Composium (Spring 2027)","forces":"Full orchestra OR chamber ensemble (2–6 instruments). Max 5 min.","age":"Ages 13–18 ONLY","nationality":"USA","notes":"Winners must attend Composium in person.","source":"direct"},{"cat":"mixed","title":"NBA William D. Revelli Memorial Composition Contest 2026","org":"National Band Association — USA","badge":"Wind Band","deadline":"1 Nov 2026","urgency":"open","free":false,"flag":"🇺🇸 USA","link":"https://nationalbandassociation.org/composition-contests/","prize":"Performance at Midwest Clinic + cash prize","forces":"Concert/wind band","age":"No age limit","nationality":"USA-focused","notes":"","source":"direct"},{"cat":"chamb","title":"Edvard Grieg International Online Composition Competition 2026","org":"JS Fest — Turku, Finland / Oslo, Norway","badge":"Multiple Categories · Online","deadline":"20 Nov 2026","urgency":"open","free":false,"flag":"🇫🇮🇳🇴 Finland / Norway","link":"https://www.jsfestcompetition.com/","prize":"Category-specific prizes. Festival 27–29 Nov 2026.","forces":"Cat. D: solo · E: piano duet · F: duo+piano · G: trio/quartet/quintet · H: electronics · I: voice+piano · J: chorus · K: music-theatre","age":"All ages","nationality":"International","notes":"Nordic/Grieg themes encouraged.","source":"direct"}];
+/* ══ DATA ══ */
+const BASELINE_DATA = [{"cat":"choral","title":"John Sanders Memorial Competition for Young Composers 2026","org":"Three Choirs Festival — Gloucester Cathedral, UK","badge":"Choral · Liturgical","deadline":"27 Mar 2026","urgency":"hot","free":true,"flag":"🇬🇧 Gloucester, UK","link":"https://www.musicalchairs.info/competitions/5281","prize":"£1,000 + publishing contract + world premiere at Three Choirs Festival","forces":"SATB choral; suitable for cathedral choir + newly rebuilt organ","age":"Young composers","nationality":"Open internationally","notes":"","source":"musicalchairs"},{"cat":"chamb","title":"Coopman Music Foundation 40plus Composition Competition 2026","org":"Coopman Music Foundation / Rosalie Ensemble — London, UK","badge":"Chamber · 40+ Composers","deadline":"31 Mar 2026","urgency":"hot","free":false,"flag":"🇬🇧 London, UK","link":"https://www.musicalchairs.info/competitions/5826","prize":"£2,000 + world premiere at Trinity Laban Conservatoire + recording","forces":"Chamber ensemble (Rosalie Ensemble)","age":"Over 40 years old only","nationality":"Open internationally","notes":"Results announced ~1 May 2026.","source":"musicalchairs"},{"cat":"choral","title":"Japan International Choral Composition Competition 2026","org":"ICOT — Tokyo, Japan","badge":"Choral","deadline":"31 Mar 2026","urgency":"hot","free":false,"flag":"🇯🇵 Tokyo, Japan","link":"https://icccj.icot.or.jp/","prize":"1st: ¥100,000 + diploma + published by Edition ICOT","forces":"Any voice combination","age":"Any age","nationality":"Open internationally","notes":"Top works may be set piece for 9th Tokyo International Choir Competition 2027.","source":"direct"},{"cat":"vocal","title":"The 2026 Lawson-May Award for Composition","org":"Solent Music Festival — Lymington, UK","badge":"Vocal-Instrumental","deadline":"1 Apr 2026","urgency":"hot","free":false,"flag":"🇬🇧 Lymington, UK","link":"https://www.musicalchairs.info/competitions/5376","prize":"£3,500 + £500 Solent Prize + world premiere May 2026","forces":"Narrator + min 2 of: piano, violin, cello, clarinet. 10–20 min.","age":"All ages","nationality":"Open internationally","notes":"6th edition. Work must be unpublished.","source":"musicalchairs"},{"cat":"vocal","title":"Fourth Mansurian International Competition 2025–2026","org":"Mansurian Foundation — Yerevan, Armenia","badge":"Vocal-Instrumental","deadline":"1 Apr 2026","urgency":"hot","free":false,"flag":"🇦🇲 Yerevan, Armenia","link":"https://www.musicalchairs.info/competitions/5510","prize":"Details on official website","forces":"Voice + 1–2 instruments (fl, cl, vln, vla, vc, pno). 6–12 min.","age":"Any age","nationality":"Open internationally","notes":"Original, unpublished, unrecorded, never publicly performed.","source":"musicalchairs"},{"cat":"chamb","title":"Third Annual Kreitler Commission Competition","org":"Summermusik / Cincinnati Chamber Orchestra — USA","badge":"Chamber Orchestra","deadline":"6 Apr 2026","urgency":"hot","free":false,"flag":"🇺🇸 Cincinnati, OH, USA","link":"https://summermusik.org/competition","prize":"$10,000 + 4 performances (premiere Aug 2027) + video recording + travel","forces":"Chamber orchestra. 12–20 min.","age":"Any age","nationality":"International (blind)","notes":"Partner: Cincinnati CO, Pittsburgh CO, Triangle CO, Reno CO.","source":"direct"},{"cat":"mixed","title":"International Music Competition OPUS 2026 — 8th Edition","org":"Krakow, Poland","badge":"Mixed / Various","deadline":"14 Apr 2026","urgency":"soon","free":false,"flag":"🇵🇱 Krakow, Poland","link":"https://www.musicalchairs.info/competitions/5782","prize":"Details on official site","forces":"Multiple categories including composition","age":"Multiple age categories","nationality":"Open internationally","notes":"","source":"musicalchairs"},{"cat":"vocal","title":"Concorso Fondazione Monini — Nuove Composizioni Vocali da Camera","org":"Teatro Lirico Sperimentale & Fondazione Monini — Spoleto, Italy","badge":"Vocal · Chamber","deadline":"20 Apr 2026","urgency":"soon","free":false,"flag":"🇮🇹 Spoleto, Italy","link":"https://www.musicalchairs.info/competitions/5837","prize":"Details on official site","forces":"New vocal chamber compositions","age":"—","nationality":"Open internationally","notes":"In memoria del Maestro Alberto Tarchini.","source":"musicalchairs"},{"cat":"solo","title":"MusEcology — International Call for Scores 2026","org":"Musica del Vivo — Rome, Italy","badge":"Solo + Piano","deadline":"22 Apr 2026","urgency":"soon","free":false,"flag":"🇮🇹 Rome, Italy","link":"https://www.musicalchairs.info/competitions/5721","prize":"Selected works performed in 2026/2027 concert season","forces":"Solo instrument + piano. Theme: ecology","age":"Not specified","nationality":"Open internationally","notes":"","source":"musicalchairs"},{"cat":"chamb","title":"Sobrio Festival International Competition for Young Composers 2026","org":"Sobrio Festival / Vincent Vogel (Berliner Philharmoniker)","badge":"Chamber · Duo","deadline":"25 Apr 2026","urgency":"soon","free":false,"flag":"🇨🇭 Sobrio, Switzerland","link":"https://www.musicalchairs.info/competitions/5395","prize":"CHF 3,000 + world premiere at Sobrio Festival","forces":"Timpani + violin duo. 10–15 min.","age":"Under 40","nationality":"Open internationally","notes":"Original, unpublished.","source":"musicalchairs"},{"cat":"chamb","title":"Earplay Donald Aird Composers Competition 2026","org":"Earplay — San Francisco, USA","badge":"Chamber ± Electronics","deadline":"30 Apr 2026","urgency":"soon","free":false,"flag":"🇺🇸 San Francisco, USA","link":"https://www.earplay.org/donald-aird-competition","prize":"$1,500 + performance by Earplay in 2027 season","forces":"1–6 players (fl, cl, pno, vln, vla, vc). Optional electronics.","age":"Any age","nationality":"Open internationally","notes":"Previously performed works accepted.","source":"direct"},{"cat":"orch","title":"11th International Composition Prize SEM 2026","org":"Sacile, Italy / Pizzicato Verlag Helvetia","badge":"Orchestra","deadline":"30 Apr 2026","urgency":"soon","free":false,"flag":"🇮🇹 Sacile, Italy","link":"https://www.musicalchairs.info/competitions/5708","prize":"€2,500 + live performance + published by Pizzicato Verlag","forces":"Symphony orchestra without soloists. 4–8 min.","age":"No age limit","nationality":"Open internationally","notes":"Unpublished, unawarded, unperformed.","source":"musicalchairs"},{"cat":"chamb","title":"Call for Scores 2026 — Duo Regards (Violin & Cello)","org":"Duo Regards / Les Musicales d'Assy — Paris, France","badge":"Chamber · Duo","deadline":"1 May 2026","urgency":"soon","free":true,"flag":"🇫🇷 Paris, France","link":"https://www.lesmusicalesdassy.fr","prize":"Working session Paris + performance + professional recording","forces":"Violin + cello. No electronics. Max 20 min.","age":"Not specified","nationality":"Open internationally","notes":"Results announced 20 May 2026.","source":"direct"},{"cat":"chamb","title":"2028 Azrieli Music Prizes","org":"Azrieli Foundation — Toronto, Canada","badge":"Chamber · Commission","deadline":"6 May 2026","urgency":"soon","free":true,"flag":"🇨🇦 Toronto, Canada","link":"https://www.azrielifoundation.org/amp/","prize":"$50,000 CAD per prize × 3 prizes + world premiere Gala Montreal 2028","forces":"Chamber music up to 15 musicians (3 prizes: Jewish, Canadian, International)","age":"Not specified","nationality":"International","notes":"Total package exceeds $250,000 CAD per prize.","source":"direct"},{"cat":"mixed","title":"George Enescu International Competition 2026 — Composition","org":"George Enescu Festival Foundation — Bucharest, Romania","badge":"Composition + Performance","deadline":"10 May 2026","urgency":"soon","free":false,"flag":"🇷🇴 Bucharest, Romania","link":"https://www.musicalchairs.info/competitions/5651","prize":"Prizes + performance at next Enescu Festival + Masterclass","forces":"Specifics in official regulations","age":"Young talents","nationality":"Open internationally","notes":"20th edition. Director: Cristian Măcelaru. 23 Aug–19 Sep 2026.","source":"musicalchairs"},{"cat":"orch","title":"The Brusa Foundation Award — 3rd Edition 2026","org":"Brusa Foundation — London, UK","badge":"Orchestra · Tonal","deadline":"30 May 2026","urgency":"open","free":true,"flag":"🇬🇧 London, UK","link":"http://www.brusafoundation.org","prize":"£5,000","forces":"Symphonic orchestra, one movement. Max 3.3.3.3–4.3.3.1, Harp, Piano, Timp, Perc, Strings.","age":"18–30","nationality":"Open internationally","notes":"","source":"direct"},{"cat":"chamb","title":"Composers / Conductors Workshop — FontanaMIX VI Edition","org":"FontanaMIXensemble — Bologna, Italy","badge":"Chamber · Workshop","deadline":"15 Jun 2026","urgency":"open","free":true,"flag":"🇮🇹 Bologna, Italy","link":"https://www.musicalchairs.info/competitions/5819","prize":"Free 4-day workshop 21–24 Oct 2026 + rehearsal + concert + accommodation","forces":"New work for FontanaMIXensemble","age":"Not specified","nationality":"Open internationally","notes":"4 composers/conductors selected. Travel at own cost.","source":"musicalchairs"},{"cat":"mixed","title":"The Respighi Prize — 15th Edition","org":"Respighi Prize — New York, USA","badge":"Composition + Solo","deadline":"30 Jun 2026","urgency":"open","free":false,"flag":"🇺🇸 New York, USA","link":"https://www.musicalchairs.info/competitions/5846","prize":"Details on official site","forces":"Composers, soloists, conductors (multiple categories)","age":"Not specified","nationality":"Open internationally","notes":"","source":"musicalchairs"},{"cat":"choral","title":"Ponce International Composition Competition","org":"Ponce, Puerto Rico","badge":"Choral · A cappella","deadline":"1 Jul 2026","urgency":"open","free":false,"flag":"🇵🇷 Ponce, Puerto Rico","link":"https://www.musicalchairs.info/competitions/5804","prize":"$1,000 + listing in international composer database","forces":"A cappella choral; all voice combinations","age":"Not specified","nationality":"Open internationally","notes":"Adjudicated by international panel.","source":"musicalchairs"},{"cat":"chamb","title":"NMGCS V International Composition Competition","org":"National Music & Global Culture Society — New York, USA","badge":"Solo / Small Ensemble","deadline":"1 Jul 2026","urgency":"open","free":false,"flag":"🇺🇸 New York, USA","link":"https://nm-gcs.org","prize":"$3,500 + performance at Lincoln Center + published in USA","forces":"Solo or ensemble up to 5 instruments. Must incorporate Turkic folk songs. Max 15 min.","age":"No age limit","nationality":"Open internationally","notes":"","source":"direct"},{"cat":"orch","title":"2nd International Composition Competition for Symphonic Flamenco","org":"OSFE — Córdoba, Spain","badge":"Orchestra · Flamenco","deadline":"31 Jul 2026","urgency":"open","free":false,"flag":"🇪🇸 Córdoba, Spain","link":"https://www.musicalchairs.info/competitions/5806","prize":"1st: €6,000 + edition + world premiere OSFE Nov 2026. Extra: €2,000. Special: €1,000.","forces":"Symphony orchestra. Based on flamenco styles. No arrangements.","age":"Not specified","nationality":"Open internationally","notes":"","source":"musicalchairs"},{"cat":"chamb","title":"Bartók World Competition — Composition 2026","org":"Liszt Academy of Music — Budapest, Hungary","badge":"Chamber · String Quartet","deadline":"25 Aug 2026","urgency":"open","free":false,"flag":"🇭🇺 Budapest, Hungary","link":"https://bartokworldcompetition.hu/en","prize":"€10,000 total: 1st €5,000 · 2nd €3,000 · 3rd €2,000 + world premiere Solti Hall + published EMB","forces":"Original string quartet. 6–8 min.","age":"Under 40","nationality":"Open internationally","notes":"","source":"direct"},{"cat":"orch","title":"Toru Takemitsu Composition Award 2026","org":"Tokyo Opera City Cultural Foundation — Tokyo, Japan","badge":"Orchestra","deadline":"30 Sep 2026","urgency":"open","free":true,"flag":"🇯🇵 Tokyo, Japan","link":"https://www.operacity.jp/en/concert/award/","prize":"¥3,000,000 (~$20,000 USD) + performance by Tokyo Philharmonic Orchestra","forces":"Full orchestra. Any format except concerto.","age":"35 or under","nationality":"Open internationally","notes":"Physical score submission only — no digital.","source":"direct"},{"cat":"mixed","title":"NBA William D. Revelli Memorial Composition Contest 2026","org":"National Band Association — USA","badge":"Wind Band","deadline":"1 Nov 2026","urgency":"open","free":false,"flag":"🇺🇸 USA","link":"https://nationalbandassociation.org/composition-contests/","prize":"Performance at Midwest Clinic + cash prize","forces":"Concert/wind band","age":"No age limit","nationality":"USA-focused","notes":"","source":"direct"},{"cat":"orch","title":"POI International Composition Competition 2026","org":"Premier Orchestral Institute — Jackson, MS, USA","badge":"Orchestra · Folk","deadline":"15 Mar 2026","urgency":"hot","free":false,"flag":"🇺🇸 Jackson, MS, USA","link":"https://www.musicalchairs.info/competitions/5676","prize":"World premiere performance at POI (June 7–14, 2026)","forces":"Orchestra. Must incorporate folk music from composer's country.","age":"Any age","nationality":"Open internationally","notes":"","source":"musicalchairs"},{"cat":"grant","title":"ASCAP Foundation Morton Gould Young Composer Awards 2026","org":"The ASCAP Foundation — New York, USA","badge":"Award · Concert Music","deadline":"Annual — Feb","urgency":"open","free":true,"flag":"🇺🇸 New York, USA","link":"https://www.ascapfoundation.org/programs/awards/young-composer-awards","prize":"Cash prizes + Leo Kaplan Award for top winner","forces":"Any original concert music — no arrangements","age":"Ages 13–29; US citizens/residents/student visa","nationality":"USA / US visa holders","notes":"Founded 1979. Past winners: Higdon, David Lang, Julia Wolfe.","source":"direct"},{"cat":"grant","title":"BMI Student Composer Awards 2026","org":"BMI Foundation — New York, USA","badge":"Award · Student Composers","deadline":"Annual — Jan","urgency":"open","free":true,"flag":"🇺🇸 New York, USA","link":"https://bmifoundation.org/applications/bmifoundation/awards/bmi_student_composer_awards","prize":"Cash prizes across multiple categories","forces":"Any genre of concert music","age":"27 and under; enrolled in accredited programs","nationality":"Western Hemisphere","notes":"Annual since 1951.","source":"direct"},{"cat":"electro","title":"2nd International Andrzej Dobrowolski Composition Competition 2026","org":"Poznan Contemporary Music Foundation / CIME — Poland","badge":"Electroacoustic","deadline":"10 Feb 2026","urgency":"hot","free":true,"flag":"🇵🇱 Poznan, Poland","link":"https://polishmusic.usc.edu/2026/01/29/2026-intl-dobrowolski-composition-competition/","prize":"1st: 2,000 PLN · 2nd: 1,500 PLN · 3rd: 1,000 PLN","forces":"Clarinet and electronics. 6–10 min. Anonymous submission.","age":"Open to all","nationality":"International","notes":"Under CIME patronage.","source":"direct"},{"cat":"solo","title":"NFA Flute Choir Call for Scores 2026","org":"National Flute Association — Portland, OR, USA","badge":"Solo/Ensemble · Flute Choir","deadline":"12 Feb 2026","urgency":"hot","free":true,"flag":"🇺🇸 Portland, OR, USA","link":"https://www.nfaonline.org/scholarships-competitions/competitions/nfa-competitions/non-performance-competitions/flute-choir-call-for-scores","prize":"World premiere at NFA Convention Portland + NFA Music Library deposit","forces":"Original works for flute choir / flute orchestra only","age":"Open to all","nationality":"International","notes":"Max 2 entries per composer.","source":"direct"},{"cat":"electro","title":"Métamorphoses International Acousmatic Composition Competition 2026","org":"Musiques & Recherches — Ohain, Belgium","badge":"Electroacoustic · Acousmatic","deadline":"15 Apr 2026","urgency":"soon","free":false,"flag":"🇧🇪 Belgium","link":"https://www.musiques-recherches.be/en","prize":"Cat. A (≤28): CD release (FREE). Cat. B (≤50): €2,500 + €750 audience + studio residency.","forces":"Acousmatic music 8–15 min. Studio-composed, loudspeaker. Stereo or 3–8 channels.","age":"Cat. A: ≤28 / students · Cat. B: ≤50","nationality":"International","notes":"Biennial since 1982. Finals at L'Espace du Son, Brussels.","source":"direct"},{"cat":"chamb","title":"ACT International Composition Competition 2026","org":"American College of Thessaloniki / Music Anatolia College — Greece","badge":"Chamber · Orchestral","deadline":"19 Apr 2026","urgency":"soon","free":false,"flag":"🇬🇷 Thessaloniki, Greece","link":"https://www.musicanatoliacollege.com/composition-competition-program/composition-competition","prize":"1st: Publication by Panas Music + plaque. 2nd–3rd: Laureate diploma. All performed at TCH.","forces":"Chamber (fl, cl, vln, vc, pno — min. 2) or symphonic. Max 5 min.","age":"Open to all","nationality":"International","notes":"Performed by ACT Ensemble and MOYSA Youth Orchestra.","source":"direct"},{"cat":"chamb","title":"NuovoSound Ensemble 2026 Inaugural Call for Scores","org":"NuovoSound Ensemble — Fort Worth, TX, USA","badge":"Chamber · Ensemble","deadline":"Spring 2026","urgency":"soon","free":false,"flag":"🇺🇸 Fort Worth, TX, USA","link":"https://scorefol.io/opportunities","prize":"World premiere at free Spring 2026 concert. Entry fee: $15.","forces":"Chamber music for NuovoSound Ensemble","age":"All living composers","nationality":"International","notes":"Concert 26 April 2026, Robert Carr Chapel.","source":"scorefolio"},{"cat":"electro","title":"IAWM Search for New Music Competition 2026","org":"International Alliance for Women in Music — International","badge":"Multiple · Women Composers","deadline":"4 May 2026","urgency":"soon","free":false,"flag":"🌍 International","link":"https://iawm.org/snm-competition/","prize":"Category-specific prizes. Winners announced August 2026.","forces":"(1) Large chamber 9+ instr.; (2) Electroacoustic; (3) Choral/vocal; (4) Sound installation.","age":"Open; IAWM membership required","nationality":"International","notes":"One entry per year. Anonymous via New Music Engine.","source":"direct"},{"cat":"electro","title":"New York City Electroacoustic Music Festival (NYCEMF) 2026","org":"NYCEMF — New York City, USA","badge":"Electroacoustic · Festival","deadline":"15 May 2026","urgency":"soon","free":false,"flag":"🇺🇸 New York, USA","link":"https://nycemf.org/","prize":"Performance at festival (8-ch and 16-ch spaces). Student 50% discount.","forces":"Fixed media (≤16-ch); live electronics (≤8-ch); instruments + electronics; video.","age":"Open to all","nationality":"International","notes":"Peer-reviewed.","source":"direct"},{"cat":"solo","title":"Arizona Flute Society Composition Competition 2026","org":"Arizona Flute Society — Arizona, USA","badge":"Solo · Flute","deadline":"Spring 2026","urgency":"open","free":true,"flag":"🇺🇸 Arizona, USA","link":"https://www.arizonaflutesociety.org/composition-competition","prize":"$250 USD","forces":"Solo flute; flute + piano; or flute + electronics. All flute types.","age":"Open to all","nationality":"International","notes":"New and existing works eligible.","source":"direct"},{"cat":"solo","title":"International Accordion Composition Competition Jaume Padrós 2026","org":"Acord Edicions / Festival Mixtur — Barcelona, Spain","badge":"Solo · Accordion","deadline":"Spring 2026","urgency":"soon","free":true,"flag":"🇪🇸 Barcelona, Spain","link":"https://scorefol.io/opportunities","prize":"€2,800","forces":"Accordion. Centenary works for Jaume Padrós Montoriol (1926–2026).","age":"Open to all","nationality":"International","notes":"Centenary. With Festival Mixtur (Barcelona).","source":"scorefolio"},{"cat":"chamb","title":"Korean Chamber Orchestra Emerging Composers Competition 2026","org":"Korean Chamber Orchestra — South Korea","badge":"Chamber · Emerging Composers","deadline":"Spring 2026","urgency":"soon","free":false,"flag":"🇰🇷 South Korea","link":"https://scorefol.io/opportunities","prize":"₩5,000,000 KRW (~$3,700) + performance with KCO. Entry fee: ₩200,000.","forces":"Original chamber works for KCO instrumentation","age":"Emerging / young composers","nationality":"International","notes":"","source":"scorefolio"},{"cat":"chamb","title":"Soundbox Fellowship Program for Composers 2026","org":"Soundbox Ventures — July 22–27, 2026","badge":"Fellowship · Residency","deadline":"Summer 2026","urgency":"open","free":false,"flag":"🇺🇸 USA","link":"https://scorefol.io/opportunities","prize":"Intensive week: rehearsals, lessons, critiques. Entry fee: $20.","forces":"Composition for resident performers","age":"All composers","nationality":"International","notes":"Focus on second performances. July 22–27, 2026.","source":"scorefolio"},{"cat":"mixed","title":"USNA Band — Charles A. Zimmermann Prize 2026","org":"U.S. Naval Academy Band — Annapolis, MD, USA","badge":"Wind / Brass · Fanfare","deadline":"31 Aug 2026","urgency":"open","free":true,"flag":"🇺🇸 Annapolis, MD, USA","link":"https://www.usna.edu/USNABand/scores/index.php","prize":"$1,000 + premiere Veterans Day Nov 11, 2026 + recording 2027","forces":"Fanfare for Wind Ensemble, Brass Ensemble, or Brass Quintet.","age":"Open to all","nationality":"International","notes":"Anonymous submission. Composer retains all rights.","source":"direct"},{"cat":"orch","title":"National Young Composers Challenge (NYCC) 2026","org":"National Young Composers Challenge — USA","badge":"Youth · Orchestra / Chamber","deadline":"1 Oct 2026","urgency":"open","free":true,"flag":"🇺🇸 USA","link":"https://www.youngcomposerschallenge.org/guidelines.php","prize":"6 winners: professional performance at the Composium (Spring 2027)","forces":"Full orchestra OR chamber ensemble (2–6 instruments). Max 5 min.","age":"Ages 13–18 ONLY","nationality":"USA","notes":"Winners must attend Composium in person.","source":"direct"},{"cat":"chamb","title":"Edvard Grieg International Online Composition Competition 2026","org":"JS Fest — Turku, Finland / Oslo, Norway","badge":"Multiple Categories · Online","deadline":"20 Nov 2026","urgency":"open","free":false,"flag":"🇫🇮🇳🇴 Finland / Norway","link":"https://www.jsfestcompetition.com/","prize":"Category-specific prizes. Festival 27–29 Nov 2026.","forces":"Cat. D: solo · E: piano duet · F: duo+piano · G: trio/quartet/quintet · H: electronics · I: voice+piano · J: chorus · K: music-theatre","age":"All ages","nationality":"International","notes":"Nordic/Grieg themes encouraged.","source":"direct"},{"cat":"grant","title":"New Music USA Creator Fund 2026","org":"New Music USA — USA (regional)","badge":"Grant · Individual Creator","deadline":"Fall 2026","urgency":"open","free":true,"flag":"🇺🇸 USA","link":"https://newmusicusa.org/program/new-music-creator-fund/","prize":"Average $3,000–$5,000 (max $5,000). Thea Musgrave Grant: $10,000.","forces":"Any genre of new music; project-based funding","age":"Open (students NOT eligible)","nationality":"USA-based","notes":"Peer-reviewed by 40–50 panelists.","source":"direct"},{"cat":"choral","title":"Cambridge Chamber Singers Composition Competition 2026–2027","org":"Cambridge Chamber Singers — Boston, MA, USA","badge":"Choral · A cappella","deadline":"Announced Summer 2026","urgency":"open","free":true,"flag":"🇺🇸 Boston, MA, USA","link":"https://cambridgechambersingers.org/compcomp/","prize":"$1,000 + performance at two Boston-area concerts","forces":"A cappella, 4–6 part mixed choir. 3–6 min.","age":"No restrictions","nationality":"International","notes":"Max 2 submissions. Anonymous judging.","source":"direct"}];
+
+/* ══ STATE ══ */
 let db = BASELINE_DATA;
-let filt = {cat:'all', urg:'all'};
+let filt = { cat: 'all', urg: 'all' };
 let lang = 'it';
 
-window.addEventListener('DOMContentLoaded', () => { computeStats(); render(); });
+/* ══ BOOT ══ */
+window.addEventListener('DOMContentLoaded', () => {
+  computeStats();
+  render();
+});
 
+/* ══ STATS ══ */
 function computeStats() {
   const now = new Date(); now.setHours(0,0,0,0);
   const MO = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
   function pd(s){const m=(s||'').match(/(\d{1,2})\s+(\w{3})\s+(\d{4})/);return m?new Date(+m[3],MO[m[2]]||0,+m[1]):null;}
-  const live = db.filter(c=>{const d=pd(c.deadline);return !d||d>=now;});
+  const live = db.filter(c => { const d = pd(c.deadline); return !d || d >= now; });
   document.getElementById('statTotal').textContent = live.length;
-  document.getElementById('statHot').textContent   = live.filter(c=>c.urgency==='hot').length;
-  document.getElementById('statFree').textContent  = live.filter(c=>c.free).length;
-  document.getElementById('statSoon').textContent  = live.filter(c=>c.urgency==='soon').length;
+  document.getElementById('statHot').textContent   = live.filter(c => c.urgency === 'hot').length;
+  document.getElementById('statSoon').textContent  = live.filter(c => c.urgency === 'soon').length;
+  document.getElementById('statFree').textContent  = live.filter(c => c.free).length;
 }
 
+/* ══ RENDER ══ */
 function render() {
-  const grid=document.getElementById('grid'), empty=document.getElementById('empty-state');
-  const search=document.getElementById('searchInput').value.toLowerCase().trim();
-  const free=document.getElementById('freeOnly').checked;
-  const now=new Date(); now.setHours(0,0,0,0);
-  const MO={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+  const grid   = document.getElementById('grid');
+  const empty  = document.getElementById('emptyState');
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  const free   = document.getElementById('freeOnly').checked;
+  const now    = new Date(); now.setHours(0,0,0,0);
+  const MO     = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
   function pd(s){const m=(s||'').match(/(\d{1,2})\s+(\w{3})\s+(\d{4})/);return m?new Date(+m[3],MO[m[2]]||0,+m[1]):null;}
-  grid.querySelectorAll('.card').forEach(c=>c.remove());
-  let count=0;
-  db.forEach((c,i)=>{
-    const dl=pd(c.deadline);
-    if(dl&&dl<now)return;
-    if(filt.cat!=='all'&&c.cat!==filt.cat)return;
-    if(filt.urg!=='all'&&c.urgency!==filt.urg)return;
-    if(free&&!c.free)return;
-    if(search){const hay=[c.title,c.org,c.badge,c.forces,c.flag,c.notes,c.nationality].join(' ').toLowerCase();if(!hay.includes(search))return;}
-    const el=buildCard(c);
-    el.style.animationDelay=(count*0.022)+'s';
-    grid.insertBefore(el,empty);
+
+  grid.querySelectorAll('.card').forEach(c => c.remove());
+  let count = 0;
+
+  db.forEach((c, i) => {
+    const dl = pd(c.deadline);
+    if (dl && dl < now) return;
+    if (filt.cat !== 'all' && c.cat !== filt.cat) return;
+    if (filt.urg !== 'all' && c.urgency !== filt.urg) return;
+    if (free && !c.free) return;
+    if (search) {
+      const hay = [c.title, c.org, c.badge, c.forces, c.flag, c.notes, c.nationality].join(' ').toLowerCase();
+      if (!hay.includes(search)) return;
+    }
+    const el = buildCard(c);
+    el.style.animationDelay = (count * 0.02) + 's';
+    grid.insertBefore(el, empty);
     count++;
   });
-  empty.style.display=count===0?'block':'none';
-  document.getElementById('cnt').textContent=count;
+
+  empty.style.display = count === 0 ? 'block' : 'none';
+  document.getElementById('cnt').textContent = count;
 }
 
-function buildCard(c){
-  const L=lang, el=document.createElement('div');
-  el.className='card'; el.dataset.t=c.cat;
-  const prize=(c.prize||'').trim();
-  const fTag=c.free?`<span class="free-badge">${L==='it'?'Gratuito':'Free'}</span>`:'';
-  const fo=L==='it'?'Organico':'Forces', dl=L==='it'?'Scadenza':'Deadline', det=L==='it'?'Dettagli':'Details';
-  el.innerHTML=`
-    <span class="src-mark">${c.source}</span>
+/* ══ BUILD CARD ══ */
+function buildCard(c) {
+  const L = lang;
+  const el = document.createElement('div');
+  el.className = 'card';
+  el.dataset.t = c.cat;
+
+  const prize = (c.prize || '').trim();
+  const fTag = c.free ? `<span class="free-tag">${L==='it'?'Gratuito':'Free'}</span>` : '';
+  const fo  = L==='it' ? 'Organico'  : 'Forces';
+  const dl  = L==='it' ? 'Scadenza'  : 'Deadline';
+  const det = L==='it' ? 'Dettagli'  : 'Details';
+  const ag  = 'Età / Age';
+  const na  = L==='it' ? 'Naz.'      : 'Nat.';
+
+  el.innerHTML = `
+    <div class="card-head">
+      <span class="card-badge">${c.badge}</span>
+      <span class="dl-pill ${c.urgency}">${c.deadline}</span>
+    </div>
     <div class="card-body">
-      <div class="card-r1"><span class="badge">${c.badge}</span><span class="dl-tag ${c.urgency}">${c.deadline}</span></div>
       <div class="card-title">${c.title}</div>
       <div class="card-org">${c.org}</div>
-      <div class="info-block">
-        ${c.forces?`<div class="irow"><span class="ikey">${fo}</span><span class="ival">${c.forces}</span></div>`:''}
-        <div class="irow"><span class="ikey">${dl}</span><span class="ival ${c.urgency}">${c.deadline}</span></div>
-        ${prize?`<div class="irow"><span class="ikey">Premio</span><span class="ival prize">${prize}${fTag}</span></div>`:(c.free?`<div class="irow"><span class="ikey"></span><span class="ival">${fTag}</span></div>`:'')}
-        ${c.age?`<div class="irow"><span class="ikey">Eta/Age</span><span class="ival">${c.age}</span></div>`:''}
-        ${c.nationality?`<div class="irow"><span class="ikey">Naz./Nat.</span><span class="ival">${c.nationality}</span></div>`:''}
-        ${c.notes?`<div class="irow"><span class="ikey">Note</span><span class="ival">${c.notes}</span></div>`:''}
+      <div class="info-table">
+        ${c.forces ? `<div class="info-row"><span class="info-key">${fo}</span><span class="info-val">${c.forces}</span></div>` : ''}
+        <div class="info-row"><span class="info-key">${dl}</span><span class="info-val ${c.urgency}">${c.deadline}</span></div>
+        ${prize ? `<div class="info-row"><span class="info-key">Premio</span><span class="info-val prize">${prize} ${fTag}</span></div>`
+                : (c.free ? `<div class="info-row"><span class="info-key"></span><span class="info-val">${fTag}</span></div>` : '')}
+        ${c.age ? `<div class="info-row"><span class="info-key">${ag}</span><span class="info-val">${c.age}</span></div>` : ''}
+        ${c.nationality ? `<div class="info-row"><span class="info-key">${na}</span><span class="info-val">${c.nationality}</span></div>` : ''}
+        ${c.notes ? `<div class="info-row"><span class="info-key">Note</span><span class="info-val">${c.notes}</span></div>` : ''}
       </div>
     </div>
-    <div class="card-foot"><span class="card-flag">${c.flag}</span><a class="card-link" href="${c.link}" target="_blank" rel="noopener">${det} →</a></div>`;
+    <div class="card-foot">
+      <span class="card-flag">${c.flag}</span>
+      <a class="card-link" href="${c.link}" target="_blank" rel="noopener">${det} →</a>
+    </div>`;
   return el;
 }
 
-function setFilter(btn){
-  const f=btn.dataset.f; filt[f]=btn.dataset.v;
-  document.querySelectorAll(`.chip[data-f="${f}"]`).forEach(c=>c.classList.remove('on'));
-  btn.classList.add('on'); render();
-}
-function setLang(l){
-  lang=l;
-  document.body.classList.toggle('en',l==='en');
-  document.getElementById('btnIT').classList.toggle('on',l==='it');
-  document.getElementById('btnEN').classList.toggle('on',l==='en');
+/* ══ FILTERS ══ */
+function setFilter(btn) {
+  const f = btn.dataset.f;
+  filt[f] = btn.dataset.v;
+  document.querySelectorAll(`.chip[data-f="${f}"]`).forEach(c => c.classList.remove('on'));
+  btn.classList.add('on');
   render();
+}
+
+/* ══ LANGUAGE ══ */
+function setLang(l) {
+  lang = l;
+  document.body.classList.toggle('en', l === 'en');
+  document.getElementById('btnIT').classList.toggle('on', l === 'it');
+  document.getElementById('btnEN').classList.toggle('on', l === 'en');
+  render();
+}
+
+/* ══ TOAST ══ */
+function toast(msg, err = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'on' + (err ? ' err' : '');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.className = '', 6000);
 }
 </script>
 </body>
