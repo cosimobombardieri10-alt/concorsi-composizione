@@ -1,0 +1,39 @@
+name: Aggiornamento Settimanale Concorsi
+
+on:
+  schedule:
+    # Ogni lunedì alle 06:00 UTC (08:00 ora italiana)
+    - cron: '0 6 * * 1'
+  
+  # Permette di eseguire manualmente dal pannello GitHub
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+
+    steps:
+      - name: Scarica il repository
+        uses: actions/checkout@v4
+
+      - name: Installa Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installa librerie
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: Esegui lo scraper
+        run: python scraper.py
+
+      - name: Pubblica i cambiamenti
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add index.html
+          git diff --staged --quiet || git commit -m "Aggiornamento automatico concorsi - $(date +'%d %B %Y')"
+          git push
